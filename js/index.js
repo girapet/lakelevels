@@ -12,6 +12,8 @@ const normal = {
   highlandLake: 1294.6
 };
 
+const charts = [];
+
 const qs = (selector) => document.querySelector(selector);
 
 const fetchData = async (options) => {
@@ -93,6 +95,11 @@ const formatPrecipitation = (value) => {
 };
 
 const showElevations = (data) => {
+  if (charts.length) {
+    charts.forEach((c) => c.destroy());
+    charts.length = 0;
+  };
+
   [ 'highlandLake', 'islandPond' ].forEach((lake) => {
     const elevation = data.elevation[lake].data[0].y.map((e) => e - normal[lake]);
     const time = data.elevation[lake].data[0].x.map((t) => DateTime.fromISO(t));
@@ -134,13 +141,13 @@ const showElevations = (data) => {
     const chartOptions = {
       type: 'line',
       options: {
+        animation: false,
         elements: {
           point: {
             radius: 0
           },
           line: {
             tension: 1,
-            borderWidth: 2
           }
         },
         scales: {
@@ -178,12 +185,33 @@ const showElevations = (data) => {
         }
       },
       data: {
-        datasets: [{
-          data: elevation.map((e, i) => ({ x: time[i].valueOf(), y: e }))
-        }]
-      }
+        datasets: [
+          {
+            data: elevation.map((e, i) => ({ x: time[i].valueOf(), y: e })),
+            borderWidth: 2,
+            borderColor: '#8080F0'
+          },
+          {
+            data: [{ x: startTime.valueOf(), y: 0 }, { x: endTime.valueOf(), y: 0 }],
+            borderWidth: 1,
+            borderColor: '#606060'
+          }
+        ]
+      },
+      plugins: [
+        {
+          id: 'background',
+          beforeDraw: (chart) => {
+            const { ctx } = chart;
+            ctx.save();
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, chart.width, chart.height);
+          }
+        }
+      ]
     };
-    new Chart(qs(`#${lake} .chart canvas`), chartOptions);
+    
+    charts.push(new Chart(qs(`#${lake} .chart canvas`), chartOptions));
   });
 };
 
@@ -227,7 +255,6 @@ const showPrecipitation = (data) => {
   qs('#precipitation2').innerText = formatPrecipitation(sum2);
   qs('#precipitation7').innerText = formatPrecipitation(sum7);
   qs('#precipitation14').innerText = formatPrecipitation(sum14);
-
 };
 
 const refresh = async () => {

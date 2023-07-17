@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 11pt;
+  color: #202020;
+}
+
+#container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+#content {
+  position: relative;
+  width: calc(100% - 25px);
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5em 0.5em 0em;
+  font-size: 18pt;
+}
+
+.subtitle {
+  position: relative;
+  width: 100%;
+  font-size: 12pt;
+  box-sizing: border-box;
+  padding: 0.4em 0.6em 0.1em;
+  font-size: 13pt;
+  color: #404040;
+}
+
+.note {
+  font-size: 0.6em;
+  font-style: italic;
+}
+
+.table {
+  position: relative;
+  width: 100%;
+}
+
+.row {
+  position: relative;
+  width: 100%;
+}
+
+.cell {
+  position: relative;
+  display: inline-block;
+}
+
+.cell:nth-child(1) {
+  box-sizing: border-box;
+  padding-left: 1.6em;
+  color: #6060A0;
+  width: 30%;
+}
+
+.cell:nth-child(2) {
+  width: 25%;
+}
+
+.cell:nth-child(3) {
+  color: #808080;
+  font-size: 10pt;
+  width: 40%;
+}
+
+.cell.indent {
+  padding-left: 2.4em;
+}
+
+.cell.latestElevation {
+  font-weight: bold;
+}
+
+.cell.chart {
+  position: relative;
+  margin-top: 0.5em;
+  width: 65%;
+  height: 9em;
+}
+
+.important {
+  color: #F00000;
+}

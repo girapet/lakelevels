@@ -1,0 +1,96 @@
+<html>
+<head>
+  <title>Lake Levels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <div id="container">
+    <div id="content">
+      <div class="title">Lake Levels<br/><span class="note">relative to normal</span></div>
+      <div class="subtitle">Highland Lake</div>
+      <div class="table" id="highlandLake">
+        <div class="row">
+          <div class="cell">latest</div>
+          <div class="cell latestElevation"></div>
+          <div class="cell latestTime"></div>
+        </div>
+        <div class="row">
+          <div class="cell"></div>
+          <div class="cell trend"></div>
+        </div>
+        <div class="row">
+          <div class="cell">two week</div>
+        </div>
+        <div class="row">
+          <div class="cell indent">high</div>
+          <div class="cell highElevation"></div>
+          <div class="cell highTime"></div>
+        </div>
+        <div class="row">
+          <div class="cell indent">low</div>
+          <div class="cell lowElevation"></div>
+          <div class="cell lowTime"></div>
+        </div>
+        <div class="row">
+          <div class="cell"></div>
+          <div class="cell chart"><canvas></canvas></div>
+        </div>
+      </div>
+      <div class="subtitle">Island Pond</div>
+      <div class="table" id="islandPond">
+        <div class="row">
+          <div class="cell">latest</div>
+          <div class="cell latestElevation"></div>
+          <div class="cell latestTime"></div>
+        </div>
+        <div class="row">
+          <div class="cell"></div>
+          <div class="cell trend"></div>
+        </div>
+        <div class="row">
+          <div class="cell">two week</div>
+        </div>
+        <div class="row">
+          <div class="cell indent">high</div>
+          <div class="cell highElevation"></div>
+          <div class="cell highTime"></div>
+        </div>
+        <div class="row">
+          <div class="cell indent">low</div>
+          <div class="cell lowElevation"></div>
+          <div class="cell lowTime"></div>
+        </div>
+        <div class="row">
+          <div class="cell"></div>
+          <div class="cell chart"><canvas></canvas></div>
+        </div>
+      </div>
+      <div class="title">Precipitation</div>
+      <div class="table" id="precipitation">
+        <div class="row">
+          <div class="cell">24 hours</div>
+          <div class="cell" id="precipitation1"></div>
+        </div>
+        <div class="row">
+          <div class="cell">48 hours</div>
+          <div class="cell" id="precipitation2"></div>
+        </div>
+        <div class="row">
+          <div class="cell">one week</div>
+          <div class="cell" id="precipitation7"></div>
+        </div>
+        <div class="row">
+          <div class="cell">two weeks</div>
+          <div class="cell" id="precipitation14"></div>
+        </div>
+        <div class="row">&nbsp;</div>
+      </div>
+    </div>
+  </div>
+  <script src="js/luxon.min.js"></script>
+  <script src="js/chart.umd.min.js"></script>
+  <script src="js/chartjs-adapter-luxon.js"></script>
+  <script type="module" src="js/index.js"></script>
+</body>
+</html>

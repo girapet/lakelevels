@@ -65,7 +65,7 @@ body {
   box-sizing: border-box;
   padding-left: 1.6em;
   color: #6060A0;
-  width: 30%;
+  width: 32%;
   text-align: right;
   padding-right: 0.7em;
 }
@@ -91,8 +91,8 @@ body {
 .cell.chart {
   position: relative;
   margin-top: 0.5em;
-  width: 18em;
-  height: 9em;
+  width: 16em;
+  height: 8em;
 }
 
 .cell.chart canvas {

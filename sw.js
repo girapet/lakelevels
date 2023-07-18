@@ -1,6 +1,6 @@
 /* eslint-env serviceworker */
 
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 
 const precacheFileNames = [
   './css/index.css',
@@ -36,16 +36,21 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-
-      return caches.open(VERSION)
-        .then(cache => fetch(event.request)
-          .then(response => cache.put(event.request, response.clone())
-            .then(() => response)));
-    })
-  );
+  if (event.request.method === 'GET') {
+    event.respondWith(
+      caches.match(event.request).then((cachedResponse) => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+  
+        return caches.open(VERSION)
+          .then(cache => fetch(event.request)
+            .then(response => cache.put(event.request, response.clone())
+              .then(() => response)));
+      })
+    );
+  }
+  else {
+    return event.response;
+  }
 });

@@ -1,6 +1,6 @@
 /* eslint-env serviceworker */
 
-const VERSION = '1.0.3';
+const VERSION = '1.0.4';
 
 const precacheFileNames = [
   './css/index.css',

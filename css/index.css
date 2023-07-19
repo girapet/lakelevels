@@ -103,3 +103,17 @@ body {
 .important {
   color: #F00000;
 }
+
+#source {
+  position: relative;
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  box-sizing: border-box;
+  padding-left: 1em;
+}
+
+#source a {
+  color: #6060FF;
+  text-decoration: none;
+}

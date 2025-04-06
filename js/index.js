@@ -3,7 +3,7 @@ const { DateTime, Duration, Interval } = luxon;
 
 const sourceUrl = 'https://nhdes.rtiamanzi.org/api/plotly/';
 const observedPoolElevationGuid = 'b375af3e-ec23-44f9-ab09-43ebe8c92a75';
-const precipitationGuid = '9dc97e62-5d1a-4218-b8d8-b8396f2f794e';
+const precipitationGuid = 'ce5ec3d5-0488-4f38-928c-4bedc708f599';
 const islandPondGuid = '74ffcc4c-69c2-4f62-a79b-dc9935e074ba';
 const highlandLakeGuid = '75b462e4-f239-4cf6-9ddf-94553ac5f26e'
 
@@ -48,6 +48,7 @@ const loadData = async () => {
   options.feature_id = islandPondGuid;
   data.elevation.islandPond = await fetchData(options);
 
+  options.feature_id = highlandLakeGuid;
   options.plot_id = precipitationGuid;
   data.precipitation = await fetchData(options);
 
